@@ -18,7 +18,8 @@
 
 .header-inner {
   background: var(--content-bg-color);
-  border-radius: $border-radius-inner;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
   box-shadow: $box-shadow-inner;
   overflow: hidden;
   padding: 0;
@@ -85,6 +86,8 @@ if (hexo-config('sidebar.position') == 'right') {
   .back-to-top {
     left: auto;
     right: $b2t-position-right;
+    border-radius: $border-radius;
+    padding: 0.2rem 0.8rem;
 
     +tablet-mobile() {
       right: $b2t-position-right-mobile;

@@ -25,7 +25,7 @@ hexo.on('generateAfter', () => {
     });
     res.on('end', () => {
       try {
-        let latest = JSON.parse(result).tag_name.replace('v', '').split('.');
+        let latest = JSON.parse(result).tag_name ? JSON.parse(result).tag_name.replace('v', '').split('.') : "";
         let current = version.split('.');
         let isOutdated = false;
         for (let i = 0; i < Math.max(latest.length, current.length); i++) {

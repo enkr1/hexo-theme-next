@@ -32,5 +32,10 @@
   },
   "engines": {
     "node": ">=10.9.0"
+  },
+  "dependencies": {
+    "hexo-generator-feed": "^3.0.0",
+    "hexo-generator-sitemap": "^3.0.1",
+    "hexo-related-popular-posts": "^5.0.1"
   }
 }

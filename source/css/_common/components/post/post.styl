@@ -2,9 +2,14 @@
   font-family: $font-family-posts;
   word-wrap();
 
-  +desktop-large() {
-    font-size: $font-size-large;
+  +desktop() {
+    font-size: $font-size-smaller;
   }
+
+  +desktop-large() {
+    font-size: $font-size-small;
+  }
+
 
   .exturl .fa {
     font-size: $font-size-small;
@@ -27,7 +32,7 @@
 }
 
 .post-button {
-  margin-top: 40px;
+  margin-top: 2rem;
   text-align: center;
 }
 

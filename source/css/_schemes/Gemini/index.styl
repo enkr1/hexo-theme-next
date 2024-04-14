@@ -4,23 +4,6 @@
 @import '../Pisces/_sub-menu';
 @import '../Pisces/_sidebar';
 
-// ==================================================
-// Rewrite _layout.styl
-// ==================================================
-// Sidebar padding used as main desktop content padding for sidebar padding and post blocks padding too.
-
-// In `source/css/_variables/Pisces.styl` there are variable for main offset:
-// $sidebar-offset                   = 12px;
-// This value alse can be changed in main NexT config as `sidebar: offset: 12` option.
-
-// In `source/css/_variables/base.styl` there are variables for other resolutions:
-// $content-tablet-padding           = 10px;
-// $content-mobile-padding           = 8px;
-// P.S. If u want to change this paddings u may set this variables into `custom_file_path.variable` (in theme _config.yml).
-
-// So, it will 12px in Desktop, 10px in Tablets and 8px in Mobiles for all possible paddings.
-// ==================================================
-// Read values from NexT config and set they as local variables to use as string variables (in any CSS section).
 $use-seo = hexo-config('seo');
 
 // ==================================================
@@ -30,22 +13,25 @@ $use-seo = hexo-config('seo');
 .content-wrap {
   background: initial;
   box-shadow: initial;
-  padding: initial;
+  padding: 1.4rem .8rem;
 }
 
 // Post & Comments blocks.
 .post-block {
   background: var(--content-bg-color);
-  border-radius: $border-radius-inner;
+  // border-radius: $border-radius-inner;
   box-shadow: $box-shadow-inner;
   padding: $content-desktop-padding;
+  border-radius: 2rem;
+  padding: 1rem 1.4rem 1.8rem;
 
   // When blocks are siblings (homepage).
-  & + .post-block {
-    border-radius: $border-radius;
+  &+.post-block {
     // Rewrite shadows & borders because all blocks have offsets.
+    // border-radius: $border-radius;
     box-shadow: $box-shadow;
-    margin-top: $sidebar-offset;
+    // margin-top: $sidebar-offset;
+    margin: 1.4rem 0 0;
   }
 }
 
@@ -54,8 +40,9 @@ $use-seo = hexo-config('seo');
   background: var(--content-bg-color);
   border-radius: $border-radius;
   box-shadow: $box-shadow;
-  margin-top: $sidebar-offset;
+  margin: 1.8rem 0 0;
   padding: $content-desktop-padding;
+  user-select: none;
 }
 
 .tabs-comment {
@@ -74,17 +61,19 @@ $use-seo = hexo-config('seo');
 
 // Pagination.
 .pagination {
+
   .prev, .next, .page-number {
     margin-bottom: initial;
     top: initial;
   }
 
-  background: var(--content-bg-color);
+  // background: var(--content-bg-color);
   border-radius: $border-radius;
   border-top: initial;
-  box-shadow: $box-shadow;
-  margin: $sidebar-offset 0 0;
-  padding: 10px 0 10px;
+  // box-shadow: $box-shadow;
+  // margin: $sidebar-offset 0 0;
+  margin: 1rem 0 0;
+  padding: 10px 0;
 }
 
 // Footer alignment.
@@ -102,7 +91,7 @@ $use-seo = hexo-config('seo');
   box-shadow: $box-shadow-inner;
 
   // Adapt submenu(s) with post-blocks.
-  + .content .post-block {
+  +.content .post-block {
     box-shadow: $box-shadow;
     margin-top: $sidebar-offset;
 
@@ -120,11 +109,25 @@ $use-seo = hexo-config('seo');
 // Headers.
 // ==================================================
 .post-body {
-  h1, h2 {
-    border-bottom: 1px solid $body-bg-color;
+  h1 {
+    /* border-bottom: 1px solid $body-bg-color; */
+    border-bottom: 1px solid rgba(198, 0, 0, .192);
+  }
+
+  h1 {
+    color: $theme-color;
+    font-size: $font-size-large;
+    margin: 3rem 0 .3rem;
+  }
+
+  h2 {
+    font-size: $font-size-medium;
+    margin: 0 0 .6rem;
   }
 
   h3 {
+    font-size: $font-size-small;
+
     if ($use-seo) {
       border-bottom: 1px solid $body-bg-color;
     } else {
@@ -137,11 +140,17 @@ $use-seo = hexo-config('seo');
       border-bottom: 1px dotted $body-bg-color;
     }
   }
+
+  // TODO: Change title size accordingly
+  +mobile-small() {
+    h1 {
+      margin: 1rem 0 0;
+      padding 0;
+      font-size: $font-size-small;
+    }
+  }
 }
 
-// ==================================================
-// > 768px & < 991px
-// ==================================================
 +tablet() {
   // Posts in blocks.
   .content-wrap {
@@ -161,18 +170,17 @@ $use-seo = hexo-config('seo');
     box-shadow: $box-shadow;
     // Inside posts blocks content padding (default 40px).
     padding: ($content-tablet-padding * 2);
+    font-size: $font-size-smaller;
   }
 
   // Only if blocks are siblings need bottom margin (homepage).
-  .post-block + .post-block {
+  .post-block+.post-block {
     margin-top: $content-tablet-padding;
   }
 
   .comments {
     margin-top: $content-tablet-padding;
     padding: $content-tablet-padding ($content-tablet-padding * 2);
-    // padding: initial;
-    // padding-top: $content-tablet-padding;
   }
 
   .pagination {
@@ -180,9 +188,6 @@ $use-seo = hexo-config('seo');
   }
 }
 
-// ==================================================
-// < 767px
-// ==================================================
 +mobile() {
   // Posts in blocks.
   .content-wrap {
@@ -202,17 +207,17 @@ $use-seo = hexo-config('seo');
     box-shadow: $box-shadow;
     min-height: auto;
     // Inside posts blocks content padding (default 40px).
-    padding: $sidebar-offset;
+    padding: .8rem 1rem 1.4rem;
   }
 
   // Only if blocks are siblings need bottom margin (homepage).
-  .post-block + .post-block {
+  .post-block+.post-block {
     margin-top: $content-mobile-padding;
   }
 
   .comments {
     margin-top: $content-mobile-padding;
-    padding: 10px $sidebar-offset;
+    padding: .8rem 1rem 0;
   }
 
   .pagination {

@@ -1,15 +1,17 @@
 .btn {
   background: var(--btn-default-bg);
-  border: 2px solid var(--btn-default-border-color);
+  // border: 1px solid var(--btn-default-border-color);
+  border: unset;
   border-radius: $btn-default-radius;
   color: var(--btn-default-color);
   display: inline-block;
-  font-size: $font-size-small;
+  font-size: $font-size-smaller;
   line-height: 2;
   padding: 0 20px;
   text-decoration: none;
   transition-property: background-color;
   the-transition();
+  box-shadow: $box-shadow-inner;
 
   &:hover {
     background: var(--btn-default-hover-bg);

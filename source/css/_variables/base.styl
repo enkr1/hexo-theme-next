@@ -21,7 +21,7 @@ $blue-bright  = #87daff;
 $blue         = #0684bd;
 $blue-deep    = #262a30;
 $orange       = #fc6423;
-
+$theme-color  = #c60000;
 
 // Scaffolding
 // Settings for some of the most global styles.
@@ -88,14 +88,14 @@ $font-family-monospace    = get_font_family('codes'), consolas, Menlo, monospace
 
 
 // Font size
-$font-size-base           = (hexo-config('font.enable') and hexo-config('font.global.size') is a 'unit') ? unit(hexo-config('font.global.size'), em) : 1em;
-$font-size-smallest       = .75em;
-$font-size-smaller        = .8125em;
-$font-size-small          = .875em;
-$font-size-medium         = 1em;
-$font-size-large          = 1.125em;
-$font-size-larger         = 1.25em;
-$font-size-largest        = 1.5em;
+$font-size-base           = (hexo-config('font.enable') and hexo-config('font.global.size') is a 'unit') ? unit(hexo-config('font.global.size'), rem) : 1rem;
+$font-size-smallest       = .8rem;
+$font-size-smaller        = .9rem;
+$font-size-small          = 1rem;
+$font-size-medium         = 1.2rem;
+$font-size-large          = 1.4rem;
+$font-size-larger         = 1.8rem;
+$font-size-largest        = 2rem;
 
 
 // Headings font size
@@ -178,7 +178,7 @@ $content-desktop-largest        = 900px;
 
 $content-desktop-padding        = 40px;
 $content-tablet-padding         = 10px;
-$content-mobile-padding         = 8px;
+$content-mobile-padding         = 1rem;
 
 
 // Headband
@@ -219,13 +219,14 @@ $sidebar-padding                      = hexo-config('sidebar.padding') is a 'uni
 $sidebar-offset                       = hexo-config('sidebar.offset') is a 'unit' ? unit(hexo-config('sidebar.offset'), px) : 12px;
 $sidebar-nav-color                    = $grey-dim;
 $sidebar-nav-hover-color              = $whitesmoke;
-$sidebar-highlight                    = $blue-bright;
+// $sidebar-highlight                    = $blue-bright;
+$sidebar-highlight                    = $theme-color;
 
 $site-author-image-width              = 96px;
 $site-author-image-border-width       = 2px;
 $site-author-image-border-color       = $black-dim;
 
-$site-author-name-margin              = 5px 0 0;
+$site-author-name-margin              = 1rem 0;
 $site-author-name-color               = $whitesmoke;
 $site-author-name-weight              = normal;
 

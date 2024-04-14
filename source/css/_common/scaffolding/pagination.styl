@@ -19,11 +19,14 @@ $page-number-basic {
     @extend $page-number-basic;
     border-bottom: 0;
     border-top: 1px solid $pagination-link-border;
-    transition-property: border-color;
+    // transition-property: border-color;
     the-transition();
+    border-radius: 2rem;
+    transition: all .3s ease-in-out;
 
     &:hover {
-      border-top-color: $pagination-link-hover-border;
+      // border-top-color: $pagination-link-hover-border;
+      background: rgba(0, 0, 0, 0.05);
     }
   }
 
@@ -45,6 +48,7 @@ $page-number-basic {
     background: $pagination-active-bg;
     border-top-color: $pagination-active-border;
     color: $pagination-active-color;
+    border-radius: 2rem;
   }
 }
 
