@@ -23,7 +23,7 @@ $use-seo = hexo-config('seo');
   box-shadow: $box-shadow-inner;
   padding: $content-desktop-padding;
   border-radius: 2rem;
-  padding: 2rem 2.4rem 2.2rem;
+  padding: 1.8rem 2.4rem 2.2rem;
 
   // When blocks are siblings (homepage).
   &+.post-block {
@@ -136,6 +136,8 @@ $use-seo = hexo-config('seo');
   }
 
   h4 {
+    font-size: $font-size-smaller;
+
     if ($use-seo) {
       border-bottom: 1px dotted $body-bg-color;
     }

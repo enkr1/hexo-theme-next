@@ -158,11 +158,11 @@ sidebar:
   # Enable sidebar on narrow view (only for Muse | Mist).
   onmobile: false
 
+# TODO: Add photo
 # Sidebar Avatar
 avatar:
   # Replace the default image and set the url here.
-  url: #/images/avatar.gif
-  # url: https://cdn.discordapp.com/attachments/826877621061156904/1181568496266649660/profile-compressed.jpg
+  # url: /images/avatar.jpg
 
   # If true, the avatar will be dispalyed in circle.
   rounded: false
@@ -373,6 +373,7 @@ codeblock:
   # Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic
   # See: https://github.com/chriskempson/tomorrow-theme
   # highlight_theme: galactic
+  # highlight_theme: night eighties
   highlight_theme: normal
   # Add copy button on codeblock
   copy_button:
@@ -658,9 +659,9 @@ livere_uid: # <your_uid>
 gitalk:
   enable: false
   github_id: enkr1 # GitHub repo owner
-  repo: blog # Repository name to store issues
-  client_id: 79bd4671c5cdd6ce24a1 # GitHub Application Client ID
-  client_secret: 069456191749dc4c702038b3a352d9fa196ce710 # GitHub Application Client Secret
+  repo: https://enkr1.github.io/blog/ # Repository name to store issues
+  client_id: 99dec6d7100fe714dcb6 # GitHub Application Client ID
+  client_secret: b359363cc177684a276e4812cb8106f0b11decc5 # GitHub Application Client Secret
   admin_user: enkr1 # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
   distraction_free_mode: true # Facebook-like distraction free mode
   # Gitalk's display language depends on user's browser or system environment
@@ -668,13 +669,13 @@ gitalk:
   # Available values: en | es-ES | fr | ru | zh-CN | zh-TW
   language: en
 
-# utterances:
-#   enable: true
-#   repo: enkr1/blog # Github repository owner and name
-#   # Available values: pathname | url | title | og:title
-#   issue_term: pathname
-#   # Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light
-#   theme: github-light
+utterances:
+  enable: false
+  repo: enkr1/blog # Github repository owner and name
+  # Available values: pathname | url | title | og:title
+  issue_term: pathname
+  # Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light
+  theme: github-light
 
 # ---------------------------------------------------------------
 # Post Widgets & Content Sharing Services
@@ -866,17 +867,19 @@ motion:
     # Only for Pisces | Gemini.
     sidebar: slideUpIn
 
+# NOTE: Loading progress bar loader
 # Progress bar in the top during page loading.
 # Dependencies: https://github.com/theme-next/theme-next-pace
 # For more information: https://github.com/HubSpot/pace
 pace:
-  enable: true
+  enable: false
   # Themes list:
   # big-counter | bounce | barber-shop | center-atom | center-circle | center-radar | center-simple
   # corner-indicator | fill-left | flat-top | flash | loading-bar | mac-osx | material | minimal
   # theme: fill-left
+  theme: material
   # theme: flash
-  theme: center-simple
+  # theme: center-simple
   # theme: minimal
 
 # JavaScript 3D library.

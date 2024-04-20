@@ -1,12 +1,22 @@
-.site-author-image {
-  border: $site-author-image-border-width solid $site-author-image-border-color;
-  display: block;
-  margin: 0 auto;
-  max-width: $site-author-image-width;
-  padding: 2px;
+.site-author {
+  position: relative;
 
-  if (hexo-config('avatar.rounded')) {
-    border-radius: 50%;
+  .site-author-image {
+    // position: absolute;
+    // border: $site-author-image-border-width solid $site-author-image-border-color;
+    display: block;
+    margin: 0 auto .8rem;
+    // max-width: $site-author-image-width;
+    // max-width: $site-author-image-width;
+    // padding: 2px;
+    width: 100%;
+    // border-top-left-radius: $border-radius;
+    // border-top-right-radius: $border-radius;
+    border-radius: $border-radius;
+
+    if (hexo-config('avatar.rounded')) {
+      border-radius: 50%;
+    }
   }
 }
 
@@ -23,7 +33,7 @@ if (hexo-config('avatar.rotated')) {
 .site-author-name {
   color: $site-author-name-color;
   font-weight: $site-author-name-weight;
-  margin: $site-author-name-margin;
+  margin: 0 0 .2rem;
   text-align: center;
   font-size: $font-size-small;
 }

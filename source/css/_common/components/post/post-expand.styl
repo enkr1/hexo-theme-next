@@ -35,6 +35,15 @@
     margin-bottom: 20px;
   }
 
+// NOTE: post's img home
+  img {
+    border-radius: $border-radius;
+    box-shadow: $box-shadow-inner;
+    max-height: 20rem;
+    width 100%;
+    object-fit: cover;
+  }
+
   .video-container {
     height: 0;
     margin-bottom: 20px;
@@ -50,6 +59,15 @@
       position: absolute;
       top: 0;
       width: 100%;
+    }
+  }
+}
+
+// NOTE: Single post page overwrite
+.post {
+  .post-body {
+    img {
+    max-height: unset;
     }
   }
 }
