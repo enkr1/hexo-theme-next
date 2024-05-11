@@ -2,34 +2,39 @@
 
 NexT.boot = {};
 
+NexT.utils.handleHashChange = () => {
+  const tHash = location.hash;
+  if (tHash !== '' && !tHash.match(/%\S{2}/)) {
+    const target = document.querySelector(`.tabs ul.nav-tabs li a[href="${tHash}"]`);
+    target && target.click();
+  }
+};
 
+// WIP: ....................................................................
 NexT.boot.registerEvents = function () {
   NexT.utils.registerScrollPercent();
   NexT.utils.registerCanIUseTag();
+  // Function to handle mobile menu toggle
+  const siteNav = document.querySelector('.site-nav');
+  const isMobile = window.innerWidth <= 768;
 
-  // Function to toggle mobile menu
   const toggleMenu = () => {
-    console.log("toggling!")
-    const siteNav = document.querySelector('.site-nav');
+    if (!isMobile) return;
     const isMenuOpen = siteNav.classList.contains('site-nav-on');
     const animateAction = isMenuOpen ? 'slideUp' : 'slideDown';
 
     if (typeof Velocity === 'function') {
       Velocity(siteNav, animateAction, {
         duration: 200,
-        complete: function () {
-          siteNav.classList.toggle('site-nav-on');
-        }
+        complete: () => siteNav.classList.toggle('site-nav-on')
       });
     } else {
       siteNav.classList.toggle('site-nav-on');
     }
   }
 
-  // Re-bind all menu related events
-  document.addEventListener('pjax:success', () => bindMenuEvents());
-
   const bindMenuEvents = () => {
+    if (!isMobile) return;
     document.querySelectorAll('.sidebar-nav li').forEach((element) => {
       element.removeEventListener('click', toggleMenu);  // Remove previous event listeners to avoid duplicates
       element.addEventListener('click', toggleMenu);
@@ -42,60 +47,53 @@ NexT.boot.registerEvents = function () {
     toggleMenu();
   });
 
-  // Use event delegation for dynamically loaded sidebar navigation items
-  document.addEventListener('click', function (event) {
-    if (event.target.closest('.sidebar-nav li')) {
-      const item = event.target.closest('.sidebar-nav li');
-      const activeTabClassName = 'sidebar-nav-active';
-      const activePanelClassName = 'sidebar-panel-active';
-      if (item.classList.contains(activeTabClassName)) return;
+  // Bind events to sidebar items
+  const sidebarNavItems = document.querySelectorAll('.sidebar-nav li');
+  const sidebarPanels = document.querySelectorAll('.sidebar-panel');
+  const activeTabClassName = 'sidebar-nav-active';
+  const activePanelClassName = 'sidebar-panel-active';
 
-      // Close the menu if it's open when a sidebar item is clicked
-      toggleMenu(); // This will close the menu
+  sidebarNavItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
 
-      const allItems = document.querySelectorAll('.sidebar-nav li');
-      const index = Array.from(allItems).indexOf(item);
-      const targets = document.querySelectorAll('.sidebar-panel');
-      const target = targets[index];
-      const currentTarget = document.querySelector(`.${activePanelClassName}`);
+      // Check if the clicked item is already active
+      if (!item.classList.contains(activeTabClassName)) {
+        // TODO: Not load when clicking on the same tab
+        // if (!isMobile) return;
 
-      if (currentTarget) {
-        window.anime({
-          targets: currentTarget,
-          duration: 200,
-          easing: 'linear',
-          opacity: 0,
-          complete: () => {
-            currentTarget.classList.remove(activePanelClassName);
-            target.style.opacity = 0;
-            target.classList.add(activePanelClassName);
-            window.anime({
-              targets: target,
-              duration: 200,
-              easing: 'linear',
-              opacity: 1
-            });
+        // Remove active classes from all items
+        sidebarNavItems.forEach(el => el.classList.remove(activeTabClassName));
+        // Add active class to the clicked item
+        item.classList.add(activeTabClassName);
+
+        // Handle panel visibility
+        sidebarPanels.forEach((panel, idx) => {
+          if (panel.classList.contains(activePanelClassName)) {
+            panel.classList.remove(activePanelClassName);
+            panel.style.display = 'none'; // Hide non-active panels
+          }
+          if (idx === index) {
+            panel.classList.add(activePanelClassName);
+            panel.style.display = 'block'; // Show active panel
           }
         });
       }
 
-      [...allItems].forEach(el => {
-        el.classList.remove(activeTabClassName);
-      });
-      item.classList.add(activeTabClassName);
-    }
+    });
   });
 
+
+  // Re-bind all menu related events
+  document.addEventListener('pjax:success', () => bindMenuEvents());
   window.addEventListener('resize', NexT.utils.initSidebarDimension);
+  window.addEventListener('hashchange', NexT.utils.handleHashChange);
 
-  window.addEventListener('hashchange', () => {
-    const tHash = location.hash;
-    if (tHash !== '' && !tHash.match(/%\S{2}/)) {
-      const target = document.querySelector(`.tabs ul.nav-tabs li a[href="${tHash}"]`);
-      target && target.click();
-    }
-  });
+  // Initial state setup: Ensure site-nav-on is not added on page load
+  if (siteNav.classList.contains('site-nav-on')) {
+    siteNav.classList.remove('site-nav-on');  // Ensure sidebar is not visible initially
+  }
 };
+
 
 NexT.boot.refresh = function () {
   /**
@@ -103,8 +101,7 @@ NexT.boot.refresh = function () {
    * Need to add config option in Front-End at 'layout/_partials/head.swig' file.
    */
   CONFIG.fancybox && NexT.utils.wrapImageWithFancyBox();
-  CONFIG.mediumzoom &&
-    window.mediumZoom(".post-body :not(a) > img, .post-body > img");
+  CONFIG.mediumzoom && window.mediumZoom(".post-body :not(a) > img, .post-body > img");
   CONFIG.lazyload && window.lozad(".post-body img").observe();
   CONFIG.pangu && window.pangu.spacingPage();
 
