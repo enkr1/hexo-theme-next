@@ -2,12 +2,30 @@
   background: $black-deep;
 
   +tablet-mobile() {
+    background: rgba(34,34,34,0.6);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     box-shadow: 0 0 16px rgba(0, 0, 0, .5);
   }
 }
 
 .site-meta {
   padding: 1rem 0;
+
+  +tablet-mobile() {
+    padding: .8rem 0;
+  }
+
+  +tablet-mobile() {
+    .site-title {
+      font-size: $font-size-smaller;
+    }
+
+    .site-subtitle {
+      font-size: $font-size-smallest;
+      margin: 0;
+    }
+  }
 }
 
 .brand {

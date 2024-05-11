@@ -45,3 +45,59 @@ for $inject_mixin in hexo-config('injects.mixin')
 // --------------------------------------------------
 for $inject_style in hexo-config('injects.style')
   @import $inject_style;
+
+
+.fancybox {
+  // background: red;
+  border: unset;
+  width: fit-content;
+  height: fit-content;
+  display: block;
+  margin: auto;
+
+  +mobile() {
+    all: unset;
+  }
+
+  img {
+    display: block;
+    // margin: auto; // NOTE: Using this will cause the p below move up
+
+    +desktop() {
+      width: 60%
+    }
+
+    &.large {
+      display: unset;
+      width: 100%;
+      margin: auto auto .8rem;
+    }
+
+    &.no-shadow {
+      box-shadow: unset !important;
+    }
+  }
+
+  .image-caption {
+    font-size: $font-size-smaller;
+    line-height: 1.4;
+  }
+
+  .fancybox-caption__body {
+    // padding: .3rem;
+  }
+}
+
+.category-all-page,
+.tag-cloud {
+  margin: -1.5rem 0 0;
+
+  .category-all-title,
+  .tag-cloud-title {
+    font-size: $font-size-small;
+    font-style: italic;
+    padding: 0 0 1rem;
+    text-align: center;
+    color: #999;
+  }
+}

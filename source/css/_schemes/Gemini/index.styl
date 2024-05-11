@@ -21,17 +21,28 @@ $use-seo = hexo-config('seo');
   background: var(--content-bg-color);
   // border-radius: $border-radius-inner;
   box-shadow: $box-shadow-inner;
+  border-radius: 1rem;
   padding: $content-desktop-padding;
-  border-radius: 2rem;
   padding: 1.8rem 2.4rem 2.2rem;
 
   // When blocks are siblings (homepage).
   &+.post-block {
     // Rewrite shadows & borders because all blocks have offsets.
-    // border-radius: $border-radius;
     box-shadow: $box-shadow;
-    // margin-top: $sidebar-offset;
     margin: 1.4rem 0 0;
+  }
+
+  // NOTE: list in post
+  ul, ol {
+    padding: 0 0 2.5rem 3rem;
+  }
+
+  ol {
+    li {
+      p {
+        margin: 0 0 1rem 0;
+      }
+    }
   }
 }
 
@@ -109,24 +120,27 @@ $use-seo = hexo-config('seo');
 // Headers.
 // ==================================================
 .post-body {
+  h1,h2,h3,h4,h5 {
+    color: $theme-color;
+  }
+
   h1 {
     /* border-bottom: 1px solid $body-bg-color; */
     border-bottom: 1px solid rgba(198, 0, 0, .192);
   }
 
   h1 {
-    color: $theme-color;
-    font-size: $font-size-large;
+    font-size: $font-size-largest;
     margin: 2rem 0 .3rem;
   }
 
   h2 {
-    font-size: $font-size-medium;
+    font-size: $font-size-larger;
     margin: 0 0 .6rem;
   }
 
   h3 {
-    font-size: $font-size-small;
+    font-size: $font-size-large;
 
     if ($use-seo) {
       border-bottom: 1px solid $body-bg-color;
@@ -136,7 +150,7 @@ $use-seo = hexo-config('seo');
   }
 
   h4 {
-    font-size: $font-size-smaller;
+    font-size: $font-size-medium;
 
     if ($use-seo) {
       border-bottom: 1px dotted $body-bg-color;
@@ -145,10 +159,17 @@ $use-seo = hexo-config('seo');
 
   // TODO: Change title size accordingly
   +mobile-small() {
-    h1 {
-      margin: 1rem 0 0;
+    h1, h2 {
+      margin: 1.3rem 0 1rem;
       padding 0;
-      font-size: $font-size-small;
+    }
+
+    h1 {
+      font-size: $font-size-large;
+    }
+
+    h2, h3, h4 {
+      font-size: $font-size-medium;
     }
   }
 }
@@ -156,7 +177,7 @@ $use-seo = hexo-config('seo');
 +tablet() {
   // Posts in blocks.
   .content-wrap {
-    padding: $content-tablet-padding;
+    padding: 7.25rem $content-mobile-padding $content-mobile-padding;
   }
 
   .posts-expand {
@@ -171,7 +192,8 @@ $use-seo = hexo-config('seo');
     // Rewrite shadows & borders because all blocks have offsets.
     box-shadow: $box-shadow;
     // Inside posts blocks content padding (default 40px).
-    padding: ($content-tablet-padding * 2) ($content-tablet-padding * 2) ($content-tablet-padding * 2.5);
+    padding: ($content-tablet-padding * .5) ($content-tablet-padding * 2) ($content-tablet-padding * 2.5);
+    // padding: 1rem 2rem 2rem;
     font-size: $font-size-smaller;
   }
 
@@ -193,7 +215,7 @@ $use-seo = hexo-config('seo');
 +mobile() {
   // Posts in blocks.
   .content-wrap {
-    padding: $content-mobile-padding;
+    padding: 7.25rem $content-mobile-padding $content-mobile-padding;
   }
 
   .posts-expand {

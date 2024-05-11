@@ -1,7 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
 //
 // Variables
 // ==================================================
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
 
 // Colors
 // colors for use across theme.
@@ -22,6 +36,7 @@ $blue         = #0684bd;
 $blue-deep    = #262a30;
 $orange       = #fc6423;
 $theme-color  = #c60000;
+$theme-color-dark  = #7d0000;
 
 // Scaffolding
 // Settings for some of the most global styles.
@@ -31,8 +46,11 @@ $text-color                   = $black-light;
 $text-color-dark              = $grey-light;
 
 // Global link color.
+// $link-color                   = $black-light;
+// $link-color-dark              = $grey-light;
+// $link-color                   = $theme-color-dark;
 $link-color                   = $black-light;
-$link-color-dark              = $grey-light;
+$link-color-dark              = $grey-link;
 $link-hover-color             = $black-deep;
 $link-hover-color-dark        = $gainsboro;
 $link-decoration-color        = $grey-dark;
@@ -85,27 +103,6 @@ $font-family-posts        = get_font_family('posts'), $font-family-base if get_f
 
 $font-family-monospace    = consolas, Menlo, monospace, $font-family-chinese;
 $font-family-monospace    = get_font_family('codes'), consolas, Menlo, monospace, $font-family-chinese if get_font_family('codes');
-
-
-// Font size
-$font-size-base           = (hexo-config('font.enable') and hexo-config('font.global.size') is a 'unit') ? unit(hexo-config('font.global.size'), rem) : 1rem;
-$font-size-smallest       = .8rem;
-$font-size-smaller        = .9rem;
-$font-size-small          = 1rem;
-$font-size-medium         = 1.2rem;
-$font-size-large          = 1.4rem;
-$font-size-larger         = 1.8rem;
-$font-size-largest        = 2rem;
-
-
-// Headings font size
-$font-size-headings-step  = .125em;
-$font-size-headings-base  = (hexo-config('font.enable') and hexo-config('font.headings.size') is a 'unit') ? unit(hexo-config('font.headings.size'), em) : 1.625em;
-
-
-// Global line height
-$line-height-base         = 2;
-$line-height-code-block   = 1.6; // Can't be less than 1.3;
 
 
 // Z-index master list
@@ -246,12 +243,13 @@ $site-state-item-border-color         = $black-dim;
 $b2t-opacity                  = 1;
 $b2t-opacity-hover            = .8;
 $b2t-position-bottom          = -100px;
-$b2t-position-bottom-on       = 19px;
-$b2t-position-right           = 30px;
-$b2t-position-right-mobile    = 20px;
+$b2t-position-bottom-on       = 10rem;
+$b2t-position-bottom-on-mobile= 1.3rem;
+$b2t-position-right           = 3rem;
+$b2t-position-right-mobile    = 1.3rem;
 $b2t-font-size                = 12px;
 $b2t-color                    = white;
-$b2t-bg-color                 = $black-deep;
+$b2t-bg-color                 = rgba(34, 34, 34, .6);
 
 //  .post-expand .post-eof
 //  In Muse scheme, margin above and below the post separator
@@ -352,3 +350,26 @@ $label-info                 = lighten(spin($note-info-border, -10), 86% + $lbg);
 $label-success              = lighten(spin($note-success-border, 10), 85% + $lbg);
 $label-warning              = lighten(spin($note-warning-border, 10), 83% + $lbg);
 $label-danger               = lighten(spin($note-danger-border, -10), 87% + $lbg);
+
+
+// Global line height
+$line-height-base         = 2;
+$line-height-code-block   = 1.6; // Can't be less than 1.3;
+
+
+// NOTE: Font size
+// $font-size-base           = (hexo-config('font.enable') and hexo-config('font.global.size') is a 'unit') ? unit(hexo-config('font.global.size'), rem) : 1.2rem;
+$font-size-smallest       = 1.1rem;
+$font-size-smaller        = 1.2rem;
+$font-size-small          = 1.3rem;
+$font-size-base           = 1.4rem;
+$font-size-medium         = 1.6rem;
+$font-size-large          = 1.8rem;
+$font-size-larger         = 2.2rem;
+$font-size-largest        = 2.8rem;
+
+// Headings font size
+$font-size-headings-step  = .125em;
+$font-size-headings-base  = (hexo-config('font.enable') and hexo-config('font.headings.size') is a 'unit') ? unit(hexo-config('font.headings.size'), em) : 1.625em;
+
+// $theme-p-color: #000;

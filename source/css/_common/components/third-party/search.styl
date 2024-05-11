@@ -27,6 +27,7 @@
   transition: transform .2s;
   width: 700px;
   z-index: $zindex-5;
+  overflow: hidden;
 
   .search-active & {
     transform: scale(1);
@@ -158,19 +159,13 @@ if (hexo-config('local_search.enable')) {
       display: flex;
     }
 
-    ul.search-result-list {
-      margin: 0 5px;
-      padding: 0;
-      width: 100%;
-    }
-
     p.search-result {
       border-bottom: 1px dashed $grey-light;
       padding: 5px 0;
     }
 
     a.search-result-title {
-      font-weight: bold;
+      font-weight: 600;
     }
 
     .search-keyword {
@@ -183,7 +178,12 @@ if (hexo-config('local_search.enable')) {
       display: flex;
       height: calc(100% - 55px);
       overflow: auto;
-      padding: 5px 25px;
+      padding: .8rem 3rem 3rem;
+
+      ul.search-result-list {
+        padding: 0;
+        width: 100%;
+      }
     }
 
     #no-result {

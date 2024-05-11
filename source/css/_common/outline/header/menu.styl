@@ -1,15 +1,37 @@
 // Menu
 // --------------------------------------------------
 .menu {
-  margin-top: 20px;
+  margin: .6rem 0 .8rem;
   padding-left: 0;
   text-align: center;
+
+  // TODO: How to optimise?
+  +mobile() {
+    margin: 0;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2.4rem;
+    padding: 2rem 2.4rem;
+  }
+
+  +tablet() {
+    margin: 0;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 1.2rem;
+  }
 }
 
 .menu-item {
+  position: relative;
   display: inline-block;
   list-style: none;
-  margin: 0 10px;
+  margin: 0 1rem;
 
   +mobile() {
     display: block;
@@ -40,13 +62,25 @@
   }
 
   .badge {
-    display: inline-block;
+    position absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: $font-size-smallest;
-    line-height: 1;
-    margin-left: .35em;
-    margin-top: .35em;
+    font-weight: 500;
     text-align: center;
     white-space: nowrap;
+    border-radius: 100%;
+    box-shadow: $box-shadow-inner;
+    color: #fff;
+    background: $theme-color;
+    width: 2rem;
+    height: 2rem;
+    top: 50%;
+    right: .8rem;
+    transform: translateY(-50%) scale(.9);
+    padding: .1rem 0 0;
+    opacity: .8;
 
     +mobile() {
       float: right;
@@ -55,8 +89,20 @@
   }
 }
 
-.menu-item-active a {
-  background: var(--menu-item-bg-color);
+.menu-item-active {
+
+  a {
+    background: var(--menu-item-bg-color);
+    color: $theme-color;
+
+    +mobile() {
+      background: unset;
+      border-radius: $border-radius * .6;
+      // border: 1px solid $theme-color;
+      border: 1px solid #999 !important;
+      box-shadow: $box-shadow-inner;
+    }
+  }
 }
 
 .use-motion .menu-item {

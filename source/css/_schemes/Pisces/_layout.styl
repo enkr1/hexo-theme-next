@@ -31,10 +31,13 @@
     width: $sidebar-desktop;
   }
 
+  // NOTE: mobile nav
   +tablet-mobile() {
     border-radius: initial;
-    position: relative;
-    width: auto;
+    position: fixed;
+    width: 100%;
+    z-index 999;
+    background: unset;
   }
 }
 
@@ -86,8 +89,14 @@ if (hexo-config('sidebar.position') == 'right') {
   .back-to-top {
     left: auto;
     right: $b2t-position-right;
-    border-radius: $border-radius;
-    padding: 0.2rem 0.8rem;
+    border-radius: .8rem;
+    padding: .2rem .8rem;
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .6rem;
+    transition: all .3s ease-in-out;
 
     +tablet-mobile() {
       right: $b2t-position-right-mobile;

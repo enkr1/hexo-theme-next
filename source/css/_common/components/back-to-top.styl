@@ -1,16 +1,17 @@
 .back-to-top {
-  background: $b2t-bg-color;
+  // background: $b2t-bg-color;
+  background: rgba(0, 0, 0, .3);
   bottom: $b2t-position-bottom;
   box-sizing: border-box;
   color: $b2t-color;
   cursor: pointer;
   left: $b2t-position-right;
-  opacity: $b2t-opacity;
+  // opacity: $b2t-opacity;
   padding: 0 6px;
   position: fixed;
   transition-property: bottom;
   z-index: $zindex-3;
-  mix-blend-mode: difference;
+  backdrop-filter: blur(3px);
 
   if (hexo-config('back2top.scrollpercent')) {
     width: initial;
@@ -28,10 +29,14 @@
 
   &.back-to-top-on {
     bottom: $b2t-position-bottom-on;
+
+    +tablet-mobile() {
+      bottom: $b2t-position-bottom-on-mobile;
+    }
   }
 
   +tablet-mobile() {
     left: $b2t-position-right-mobile;
-    opacity: $b2t-opacity-hover;
+    // opacity: $b2t-opacity-hover;
   }
 }

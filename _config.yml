@@ -113,13 +113,14 @@ darkmode: false
 # Value before `||` delimiter is the target link, value after `||` delimiter is the name of Font Awesome icon.
 # When running the site in a subdirectory (e.g. yoursite.com/blog), remove the leading slash from link value (/archives -> archives).
 # External url should start with http:// or https://
-# TODO: How to build them?
 menu:
   home: / || fa fa-home
   about: /about/ || fa fa-user
-  tags: /tags/ || fa fa-tags
+  Gallery: /gallery/ || fa fa-image
   categories: /categories/ || fa fa-th
-  archives: /archives/ || fa fa-archive
+  tags: /tags/ || fa fa-tags
+  History: /archives/ || fa fa-history
+  Platforms: https://enkr1.github.io/platforms/ || fa fa-link
   # schedule: /schedule/ || fa fa-calendar
   # sitemap: /sitemap.txt || fa fa-sitemap
   # commonweal: /404/ || fa fa-heartbeat
@@ -204,7 +205,7 @@ links_settings:
 
 links:
   #Title: http://yoursite.com
-  "Other Platforms": https://enkr1.github.io/platforms
+  # "Other Platforms": https://enkr1.github.io/platforms
 
 # Table of Contents in the Sidebar
 # Front-matter variable (unsupport wrap expand_all).
@@ -215,7 +216,7 @@ toc:
   # If true, all words will placed on next lines if header width longer then sidebar width.
   wrap: false
   # If true, all level of TOC in a post will be displayed, rather than the activated part of it.
-  expand_all: true
+  expand_all: false
   # Maximum heading depth of generated toc.
   max_depth: -1
 
@@ -258,7 +259,7 @@ symbols_count_time:
   total_time: true
   exclude_codeblock: false
   awl: 4
-  wpm: 275
+  wpm: 300
   suffix: "min(s)"
   # symbols: true
   # time: true
@@ -442,25 +443,25 @@ font:
   global:
     external: true
     family:
-    size: .8
+    # size: .9
 
   # Font settings for site title (.site-title).
   title:
     external: true
     family:
-    size: 1.4
+    # size: 1.4
 
   # Font settings for headlines (<h1> to <h6>).
   headings:
     external: true
     family:
-    size: 1.2
+    # size: 1.2
 
   # Font settings for posts (.post-body).
   posts:
     external: true
     family:
-    size: 1.0 # FIXME: Not working?
+    # size: 1.0 # FIXME: Not working?
 
   # Font settings for <code> and code blocks.
   codes:
@@ -533,7 +534,7 @@ math:
 
 # Easily enable fast Ajax navigation on your website.
 # Dependencies: https://github.com/theme-next/theme-next-pjax
-pjax: false
+pjax: true
 
 # FancyBox is a tool that offers a nice and elegant way to add zooming functionality for images.
 # For more information: https://fancyapps.com/fancybox
@@ -733,10 +734,10 @@ leancloud_visitors:
 # Visit https://console.firebase.google.com/u/0/ to get apiKey and projectId.
 # Visit https://firebase.google.com/docs/firestore/ to get more information about firestore.
 firestore:
-  enable: false
+  enable: true
   collection: articles # Required, a string collection name to access firestore database
-  apiKey: # Required
-  projectId: # Required
+  apiKey: AIzaSyBxexVzGzOqDUGFzHVT_-oYxkqAetlFUSo # Required
+  projectId: hexo-blog-9ccea # Required
 
 # Show Views / Visitors of the website / page with busuanzi.
 # Get more information on http://ibruce.info/2015/04/04/busuanzi
@@ -1026,3 +1027,11 @@ vendors:
 css: css
 js: js
 images: images
+
+# REF: https://github.com/next-theme/hexo-theme-next/blob/master/_config.yml
+# Open graph settings
+# See: https://hexo.io/docs/helpers#open-graph
+open_graph:
+  enable: true
+  options:
+    title: "TEST_QWEQWEQWE"

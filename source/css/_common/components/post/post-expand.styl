@@ -35,13 +35,16 @@
     margin-bottom: 20px;
   }
 
-// NOTE: post's img home
   img {
     border-radius: $border-radius;
     box-shadow: $box-shadow-inner;
-    max-height: 20rem;
+    max-height: 25rem;
     width 100%;
     object-fit: cover;
+
+    +mobile() {
+      max-height: unset;
+    }
   }
 
   .video-container {
@@ -67,7 +70,7 @@
 .post {
   .post-body {
     img {
-    max-height: unset;
+      max-height: unset;
     }
   }
 }

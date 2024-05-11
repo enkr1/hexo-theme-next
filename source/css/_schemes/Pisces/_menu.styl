@@ -31,22 +31,17 @@
     &:hover {
       @extend .menu-item-active a;
     }
+
+    +mobile() {
+      padding: .5rem 1.2rem;
+      border: 1px solid transparent;
+    }
   }
 
   +tablet-mobile() {
     &.menu-item-search {
       display: none;
     }
-  }
-
-  .badge {
-    background: $grey-light;
-    border-radius: 10px;
-    color: white;
-    float: right;
-    padding: 2px 5px;
-    text-shadow: 1px 1px 0 rgba(0, 0, 0, .1);
-    vertical-align: middle;
   }
 }
 

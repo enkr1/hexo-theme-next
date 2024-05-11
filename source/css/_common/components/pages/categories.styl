@@ -1,37 +1,67 @@
-.category-all-page {
-  .category-all-title {
-    text-align: center;
-  }
+.category-all-page
 
-  .category-all {
-    margin-top: 20px;
-  }
+  .category-all
+    ul
+      list-style: none
+      margin: 0
+      padding: 0
 
-  .category-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
+    .category-list
 
-  .category-list-item {
-    margin: 5px 10px;
-  }
+      .category-list-item
+        padding: .2rem 0 0 .8rem;
+        position: relative;
+        margin: 0;
 
-  .category-list-count {
-    color: $grey;
+        .category-list-link
+          text-decoration: none
+          color: #555
+          display: block // This ensures that the link fills the area for a larger click target
+          padding: 0rem .3rem;
+          // transition: all .3s ease-in-out;
 
-    &::before {
-      content: ' (';
-      display: inline;
-    }
+          &::before {
+            content: "";
+          }
 
-    &::after {
-      content: ') ';
-      display: inline;
-    }
-  }
+          &:hover
+            color: $theme-color;
+            font-weight: 500;
 
-  .category-list-child {
-    padding-left: 10px;
-  }
-}
+            &::before {
+              // content: "➤ ";
+              content: "► ";
+            }
+
+            ~.category-list-count {
+              color: $theme-color;
+            }
+
+        .category-list-count
+          display: inline-block
+          // background-color: #e0e0e0
+          // border-radius: 10px
+          padding: 0rem .6rem
+          // font-size: $font-size-smallest;
+          // margin-left: 0.5rem
+          position: absolute
+          right: 10px
+          top: .2rem;
+          z-index: -1;
+          // transform: translateY(-50%)
+
+      >.category-list-item
+        padding-left: unset;
+
+        >a
+          font-weight: 500;
+          color: $theme-color !important;
+
+    // Remove indent for first-level items
+    .category-list > .category-list-item
+      margin-left: 0
+
+    // Styles for nested list items
+    .category-list-child
+      display: block
+      padding-left: 20px

@@ -1,3 +1,4 @@
+// NOTE: Global
 .site-nav-toggle, .site-nav-right {
   display: none;
 
@@ -7,7 +8,7 @@
 
   .toggle {
     color: var(--text-color);
-    padding: 10px;
+    padding: 1rem;
     width: 22px;
 
     .toggle-line {
@@ -19,6 +20,9 @@
 
 .site-nav {
   display: block;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 
   +mobile() {
     clear: both;
@@ -28,4 +32,55 @@
   &.site-nav-on {
     display: block;
   }
+
+  // NOTE: menu in here
+  // themes/next/source/css/_common/outline/header/menu.styl
+}
+
+.site-nav-right {
+
+  .toggle {
+    // 1rem;
+  }
+
+  +tablet() {
+    padding: 0 1.3rem 0 0;
+  }
+
+  +mobile() {
+    padding: 0 1.2rem 0 0;
+  }
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  height: .6rem;
+  width: .5rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(198, 0, 0, 0.192);
+  border-radius: 2rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $theme-color;
+}
+
+p {
+  font-optical-sizing: auto;
+}
+
+.globe-view-counter-container{
+  margin: 1rem 0 0;
+  border-radius: $border-radius - .3rem;
+  overflow: hidden;
 }

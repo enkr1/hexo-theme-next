@@ -14,6 +14,10 @@ body {
   font-size: $font-size-base;
   line-height: $line-height-base;
 
+  p {
+    line-height: 1.8;
+  }
+
   +tablet-mobile() {
     // Remove the padding of body when the sidebar is open.
     padding-left: 0 !important;
@@ -35,7 +39,7 @@ for headline in (1 .. 6) {
 }
 
 p {
-  margin: 0 0 20px 0;
+  margin: 0 0 1.3rem 0;
 }
 
 a, span.exturl {

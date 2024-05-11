@@ -1,22 +1,23 @@
 .btn {
-  background: var(--btn-default-bg);
-  // border: 1px solid var(--btn-default-border-color);
-  border: unset;
-  border-radius: $btn-default-radius;
+  background: rgba(195, 195, 195, .3);
+  border: .3px solid rgba(135, 135, 135, .1);
+  border-radius: $btn-default-radius - .4rem;
   color: var(--btn-default-color);
   display: inline-block;
-  font-size: $font-size-smaller;
+  font-size: $font-size-smallest;
   line-height: 2;
-  padding: .3rem 1rem;
+  padding: .3rem 1.3rem;
   text-decoration: none;
   transition-property: background-color;
   the-transition();
   box-shadow: $box-shadow-inner;
+  backdrop-filter: blur(3px);
 
   &:hover {
-    background: var(--btn-default-hover-bg);
-    border-color: var(--btn-default-hover-border-color);
+    background: $theme-color;
+    border-color: $theme-color;
     color: var(--btn-default-hover-color);
+    font-weight: 500;
   }
 
   + .btn {
