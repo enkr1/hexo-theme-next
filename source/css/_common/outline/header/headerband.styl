@@ -1,4 +1,12 @@
 .headband {
   background: $headband-bg;
   height: $headband-height;
+
+  +tablet() {
+    display: none !important;
+  }
+
+  +mobile() {
+    display: none !important;
+  }
 }

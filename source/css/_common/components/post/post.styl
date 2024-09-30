@@ -10,37 +10,71 @@
     // font-size: $font-size-small;
   }
 
-
-  .exturl {
+  a:not(.fancybox):not(.category-list-link):not(.btn) {
     position: relative;
-    margin: 0 1.2rem 0 0;
+    margin: 0 .1rem 0 0;
     color: $theme-color;
     display: inline;
 
-    .fa {
-      font-size: $font-size-small;
+    // Add the Font Awesome icon before the link text
+    &::after {
+      font-family: 'Font Awesome 5 Free'; // or the appropriate Font Awesome version
+      content: "\f35d"; // Unicode for fa-external-link-alt
+      font-weight: 900; // Font weight for Font Awesome solid icons
+      font-size: $font-size-smallest;
 
-      &.fa-external-link-alt {
-        font-size: $font-size-smallest - .15rem;
-        opacity: .3;
-        position: absolute;
-        transform: translate(.3rem, .65rem);
+      // Additional styles for positioning and appearance
+      position: relative;
+      top: -.1rem;
+      right: 0;
+      padding: 0 .1rem 0 .4rem;
+      opacity: .3;
+      display: inline-block;
+    }
 
-        // +desktop() {
-        //   font-size: $font-size-smallest - .15rem;
-        // }
+    // Specific adjustments for different devices
+    +tablet() {
+      // margin: 0 1.3rem 0 0;
 
-        +tablet() {
-          font-size: $font-size-smallest - .2rem;
-          transform: translate(.3rem, .6rem);
-        }
-
-        +mobile() {
-          // font-size: $font-size-smallest - .2rem;
-          transform: translate(.3rem, .55rem);
-        }
-
+      &::after {
+        // transform: translate(1.4rem, -.0rem) scale(.9)
       }
+    }
+
+    +mobile() {
+      &::after {
+        // transform: translate(1.4rem, .25rem) scale(.9)
+      }
+    }
+  }
+
+  .exturl {
+    // margin: 0 1.2rem 0 0;
+
+    .fa {
+      display: none;
+      // font-size: $font-size-small;
+//       &.fa-external-link-alt {
+//         font-size: $font-size-smallest - .15rem;
+//         opacity: .3;
+//         position: absolute;
+//         transform: translate(.3rem, .65rem);
+//
+//         // +desktop() {
+//         //   font-size: $font-size-smallest - .15rem;
+//         // }
+//
+//         +tablet() {
+//           font-size: $font-size-smallest - .2rem;
+//           transform: translate(.3rem, .6rem);
+//         }
+//
+//         +mobile() {
+//           // font-size: $font-size-smallest - .2rem;
+//           transform: translate(.3rem, .55rem);
+//         }
+//
+//       }
     }
   }
 
@@ -57,27 +91,33 @@
   position: absolute;
   display: inline-block;
   transform: rotate(30deg) scale(0.8);
-  opacity: .3;
+  opacity: .6;
   right: -1.5rem;
-  top: -1.8rem;
+  top: -.8rem;
   color: $theme-color;
 
   +tablet() {
-    top: -.9rem;
+    top: -0.5rem;
+    right: -1.2rem;
   }
 
   +mobile() {
-    right: -.5rem;
-    top: -1rem;
+    top: -0.5rem;
+    right: -1rem;
   }
 }
 
 .post-button {
-  text-align: center;
-  position: absolute;
+  text-align: right;
   font-size: $font-size-smallest;
-  right: -1.55rem;
-  bottom: -2.5rem;
+
+  +desktop() {
+    opacity: .6;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 
   +tablet() {
     bottom: -3.3rem;
@@ -85,7 +125,7 @@
 
   +mobile() {
     right: -0.3rem;
-    bottom: -1.9rem;
+    bottom: -3rem;
   }
 }
 

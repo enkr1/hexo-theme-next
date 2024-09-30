@@ -1,5 +1,5 @@
 /* global NexT, CONFIG, Velocity */
-
+const WIDTH_THRESHOLD = 1200;
 NexT.boot = {};
 
 NexT.utils.handleHashChange = () => {
@@ -16,10 +16,21 @@ NexT.boot.registerEvents = function () {
   NexT.utils.registerCanIUseTag();
   // Function to handle mobile menu toggle
   const siteNav = document.querySelector('.site-nav');
-  const isMobile = window.innerWidth <= 768;
+  const isMobile = window.innerWidth < WIDTH_THRESHOLD;
+
+  console.debug(`window.innerWidth ${window.innerWidth}`)
+
+  // Log on window resize
+  window.addEventListener("resize", function () {
+    console.debug("Updated width after resize:", window.innerWidth);
+    isMobile = window.innerWidth < WIDTH_THRESHOLD;
+  });
 
   const toggleMenu = () => {
+    console.debug(`~> Toggle isMobile: ${isMobile}, size:`, window.innerWidth)
     if (!isMobile) return;
+
+    console.debug("Toggle ON")
     const isMenuOpen = siteNav.classList.contains('site-nav-on');
     const animateAction = isMenuOpen ? 'slideUp' : 'slideDown';
 

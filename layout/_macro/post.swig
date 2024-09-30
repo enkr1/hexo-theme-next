@@ -46,6 +46,9 @@
           {%- set time_diff = time(post.date) != time(post.updated) %}
           {%- set datetime_diff = date_diff or time_diff %}
 
+<!--
+NOTE: created_at
+-->
           {%- if theme.post_meta.created_at %}
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -63,6 +66,11 @@
             </span>
           {%- endif %}
 
+<!--
+NOTE: created_at
+-->
+<!--
+-->
           {%- if theme.post_meta.updated_at.enable and datetime_diff %}
             {%- set display_updated = not theme.post_meta.updated_at.another_day or theme.post_meta.updated_at.another_day and date_diff %}
 
@@ -107,16 +115,6 @@
             </span>
           {%- endif %}
 
-          {%- if theme.firestore.enable %}
-            <span class="post-meta-item" title="{{ __('post.views') }}">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-users"></i>
-              </span>
-              <span class="post-meta-item-text">{{ __('post.views') + __('symbol.colon') }}</span>
-              <span class="firestore-visitors-count"></span>
-            </span>
-          {%- endif %}
-
           {%- if not is_index and theme.busuanzi_count.enable and theme.busuanzi_count.post_views %}
             <span class="post-meta-item" title="{{ __('post.views') }}" id="busuanzi_container_page_pv" style="display: none;">
               <span class="post-meta-item-icon">
@@ -126,8 +124,6 @@
               <span id="busuanzi_value_page_pv"></span>
             </span>
           {%- endif %}
-
-          {{- next_inject('postMeta') }}
 
           {%- if config.symbols_count_time.symbols %}
           {%- if theme.symbols_count_time.separated_meta %}<br>{%- endif %}
@@ -151,6 +147,24 @@
                 <span class="post-meta-item-text">{{ __('symbols_count_time.time') }} &asymp;</span>
               {%- endif %}
               <span>{{ symbolsTime(post, config.symbols_count_time.awl, config.symbols_count_time.wpm, __('symbols_count_time.time_minutes')) }}</span>
+            </span>
+          {%- endif %}
+
+<!--
+NOTE: disqus
+-->
+          {{- next_inject('postMeta') }}
+
+<!--
+NOTE: views count
+-->
+          {%- if theme.firestore.enable %}
+            <span class="post-meta-item" title="{{ __('post.views') }}">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-users"></i>
+              </span>
+              <span class="post-meta-item-text">{{ __('post.views') + __('symbol.colon') }}</span>
+              <b><span class="firestore-visitors-count"></span></b>
             </span>
           {%- endif %}
 

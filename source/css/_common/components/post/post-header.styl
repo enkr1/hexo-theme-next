@@ -17,6 +17,14 @@
       }
     }
   }
+
+  article {
+    .post-meta {
+      .post-meta-item::nth-child(2) {
+        display: none !important;
+      }
+    }
+  }
 }
 
 .posts-expand .post-header {
@@ -109,12 +117,21 @@
   color: $grey-dark;
   font-family: $font-family-posts;
   font-size: $font-size-smallest;
-  margin: 1rem 0 1.3rem;
+  margin: 1rem 0 2.4rem;
   text-align: center;
 
   .post-description {
     font-size: $font-size-small;
     margin-top: 2px;
+    text-align: justify;
+
+    +tablet() {
+      display: none;
+    }
+
+    +mobile() {
+      display: none;
+    }
   }
 
   time {

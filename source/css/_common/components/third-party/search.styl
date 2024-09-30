@@ -4,30 +4,33 @@
   left: 0;
   position: fixed;
   top: 0;
-  transition: visibility 0s linear .2s, background .2s;
+  transition: visibility 0s linear .3s, background .3s;
   visibility: hidden;
   width: 100%;
   z-index: $zindex-4;
 
   &.search-active {
-    background: rgba(0, 0, 0, .3);
+    background: rgba(0, 0, 0, .6);
     transition: background .2s;
     visibility: visible;
   }
 }
 
 .search-popup {
+  --search-popup-width: 80vw;
+
   background: var(--card-bg-color);
   border-radius: $border-radius;
-  height: 80%;
-  left: calc(50% - 350px);
+  height: 50%;
+  left: calc(50% - (var(--search-popup-width) / 2));
   position: fixed;
   top: 10%;
   transform: scale(0);
   transition: transform .2s;
-  width: 700px;
+  width: var(--search-popup-width);
   z-index: $zindex-5;
   overflow: hidden;
+  opacity: .9;
 
   .search-active & {
     transform: scale(1);
@@ -189,6 +192,22 @@ if (hexo-config('local_search.enable')) {
     #no-result {
       color: $grey-light;
       margin: auto;
+
+
+      @keyframes blink {
+          0%, 100% {
+              opacity: 1;
+          }
+
+          50% {
+              opacity: 0;
+          }
+      }
+
+      .fa-search {
+        font-size: 3rem;
+        animation: blink 1.3s infinite;
+      }
     }
   }
 }

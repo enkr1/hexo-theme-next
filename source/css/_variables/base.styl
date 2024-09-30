@@ -5,18 +5,6 @@
 // Variables
 // ==================================================
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-html {
-  font-size: 62.5%;
-  overflow-x: hidden;
-}
-
 // Colors
 // colors for use across theme.
 // --------------------------------------------------
@@ -240,16 +228,16 @@ $site-state-item-border-color         = $black-dim;
 // Components
 // --------------------------------------------------
 // Back to top
-$b2t-opacity                  = 1;
-$b2t-opacity-hover            = .8;
-$b2t-position-bottom          = -100px;
-$b2t-position-bottom-on       = 10rem;
-$b2t-position-bottom-on-mobile= 1.3rem;
-$b2t-position-right           = 3rem;
-$b2t-position-right-mobile    = 1.3rem;
-$b2t-font-size                = 12px;
-$b2t-color                    = white;
-$b2t-bg-color                 = rgba(34, 34, 34, .6);
+$b2t-opacity                    = 1;
+$b2t-opacity-hover              = .8;
+$b2t-position-bottom            = -100px;
+$b2t-position-bottom-on         = 10rem;
+$b2t-position-bottom-on-mobile  = 3.3rem;
+$b2t-position-right             = 3rem;
+$b2t-position-right-mobile      = 1.3rem;
+$b2t-font-size                  = 12px;
+$b2t-color                      = white;
+$b2t-bg-color                   = rgba(34, 34, 34, .6);
 
 //  .post-expand .post-eof
 //  In Muse scheme, margin above and below the post separator
@@ -363,6 +351,7 @@ $font-size-smallest       = 1.1rem;
 $font-size-smaller        = 1.2rem;
 $font-size-small          = 1.3rem;
 $font-size-base           = 1.4rem;
+// $font-size-base           = $font-size-small;
 $font-size-medium         = 1.6rem;
 $font-size-large          = 1.8rem;
 $font-size-larger         = 2.2rem;
@@ -373,3 +362,15 @@ $font-size-headings-step  = .125em;
 $font-size-headings-base  = (hexo-config('font.enable') and hexo-config('font.headings.size') is a 'unit') ? unit(hexo-config('font.headings.size'), em) : 1.625em;
 
 // $theme-p-color: #000;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}

@@ -1,4 +1,5 @@
 /* global CONFIG */
+const LENGTH_ELLIPSIS = 300;
 
 document.addEventListener('DOMContentLoaded', () => {
   // Popup Window
@@ -135,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let { position, word } = item;
             // Cut out 100 characters
             let start = position - 20;
-            let end = position + 80;
+            let end = position + LENGTH_ELLIPSIS;
             if (start < 0) {
               start = 0;
             }
@@ -181,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
           resultItem += '</li>';
           resultItems.push({
             item: resultItem,
-            id  : resultItems.length,
+            id: resultItems.length,
             hitCount,
             searchTextCount
           });
@@ -214,9 +215,9 @@ document.addEventListener('DOMContentLoaded', () => {
         isfetched = true;
         datas = isXml ? [...new DOMParser().parseFromString(res, 'text/xml').querySelectorAll('entry')].map(element => {
           return {
-            title  : element.querySelector('title').textContent,
+            title: element.querySelector('title').textContent,
             content: element.querySelector('content').textContent,
-            url    : element.querySelector('url').textContent
+            url: element.querySelector('url').textContent
           };
         }) : JSON.parse(res);
         // Only match articles with not empty titles

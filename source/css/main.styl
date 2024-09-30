@@ -68,9 +68,13 @@ for $inject_style in hexo-config('injects.style')
     }
 
     &.large {
-      display: unset;
+      display: block;
+      min-width: 100%;
       width: 100%;
-      margin: auto auto .8rem;
+      min-height: 100%;
+      height: 100%;
+      max-height: unset;
+      // margin: auto auto 1.3rem;
     }
 
     &.no-shadow {
@@ -83,14 +87,19 @@ for $inject_style in hexo-config('injects.style')
     line-height: 1.4;
   }
 
-  .fancybox-caption__body {
-    // padding: .3rem;
+  .fancybox-caption {
+    transform: translateY(1.1rem);
+
+    .fancybox-caption__body {
+      // padding: .3rem;
+    }
   }
 }
 
 .category-all-page,
 .tag-cloud {
   margin: -1.5rem 0 0;
+  padding: 0 1rem 3rem;
 
   .category-all-title,
   .tag-cloud-title {
@@ -100,4 +109,32 @@ for $inject_style in hexo-config('injects.style')
     text-align: center;
     color: #999;
   }
+
+  .tag-cloud-tags {
+    // display: flex;
+    // flex-wrap: wrap;
+
+    a {
+      margin: auto !important;
+      transition: all .3s ease-in-out;
+      padding: 1.3rem;
+      border: none;
+
+      &::after {
+        // display: none !important;
+        all: unset !important;
+      }
+
+      &:hover {
+        // transform: scale(1.2);
+        // color: red;
+      }
+    }
+  }
+}
+
+.yt-playlist {
+  height: 100%;
+  min-height: 50rem;
+  width: 100%;
 }
