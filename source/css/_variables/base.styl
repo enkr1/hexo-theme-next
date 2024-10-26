@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
+// NOTE: used by site-meta.styl's .site-title
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 //
 // Variables
 // ==================================================
@@ -25,6 +28,7 @@ $blue-deep    = #262a30;
 $orange       = #fc6423;
 $theme-color  = #c60000;
 $theme-color-dark  = #7d0000;
+$badge-color  = $grey;
 
 // Scaffolding
 // Settings for some of the most global styles.
@@ -50,7 +54,7 @@ $blockquote-color-dark        = $grey;
 $border-color                 = $grey-light;
 
 // Background color for <body>
-$body-bg-color                = white;
+$body-bg-color                = #ffffff;
 $body-bg-color-dark           = #282828;
 $content-bg-color             = white;
 $content-bg-color-dark        = $black-dim;
@@ -76,6 +80,8 @@ get_font_family(config) {
 
 // Font families.
 $font-family-chinese      = "PingFang SC", "Microsoft YaHei";
+// $font-family-chinese      = "Bona Nova SC", serif;
+
 
 $font-family-base         = $font-family-chinese, sans-serif;
 $font-family-base         = get_font_family('global'), $font-family-chinese, sans-serif if get_font_family('global');
@@ -373,4 +379,28 @@ $font-size-headings-base  = (hexo-config('font.enable') and hexo-config('font.he
 html {
   font-size: 62.5%;
   overflow-x: hidden;
+}
+
+
+// From Gemini
+// Settings for some of the most global styles.
+// --------------------------------------------------
+
+// Borders.
+// --------------------------------------------------
+// $box-shadow-inner        = .3rem .3rem .8rem 0rem rgba(0, 0, 0, 0.033);
+$box-shadow-inner        = .3rem .3rem .8rem 0rem rgba(0, 0, 0, 0.1);
+$box-shadow              = 0rem 0rem 1rem 0rem rgba(0, 0, 0, 0.1);
+
+$border-radius-inner     = initial;
+$border-radius           = 1.4rem;
+
+
+// NEW: this might be the theme we are using
+.sidebar-inner,
+.header-inner,
+.content.index article,
+.post-block
+{
+  border: 1px solid #000;
 }

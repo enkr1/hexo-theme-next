@@ -16,7 +16,7 @@ NexT.boot.registerEvents = function () {
   NexT.utils.registerCanIUseTag();
   // Function to handle mobile menu toggle
   const siteNav = document.querySelector('.site-nav');
-  const isMobile = window.innerWidth < WIDTH_THRESHOLD;
+  let isMobile = window.innerWidth < WIDTH_THRESHOLD;
 
   console.debug(`window.innerWidth ${window.innerWidth}`)
 

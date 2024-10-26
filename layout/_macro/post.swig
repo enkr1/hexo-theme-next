@@ -125,6 +125,17 @@ NOTE: created_at
             </span>
           {%- endif %}
 
+
+<!--
+NEW: Added a break after category
+-->
+
+  <br>
+
+
+<!--
+NOTE: word count
+-->
           {%- if config.symbols_count_time.symbols %}
           {%- if theme.symbols_count_time.separated_meta %}<br>{%- endif %}
             <span class="post-meta-item" title="{{ __('symbols_count_time.count') }}">
@@ -138,6 +149,10 @@ NOTE: created_at
             </span>
           {%- endif %}
 
+<!--
+NOTE: reading time
+-->
+
           {%- if config.symbols_count_time.time %}
             <span class="post-meta-item" title="{{ __('symbols_count_time.time') }}">
               <span class="post-meta-item-icon">
@@ -150,9 +165,11 @@ NOTE: created_at
             </span>
           {%- endif %}
 
+
 <!--
 NOTE: disqus
 -->
+
           {{- next_inject('postMeta') }}
 
 <!--
@@ -164,7 +181,7 @@ NOTE: views count
                 <i class="fa fa-users"></i>
               </span>
               <span class="post-meta-item-text">{{ __('post.views') + __('symbol.colon') }}</span>
-              <b><span class="firestore-visitors-count"></span></b>
+              <b><span class="firestore-visitors-count">loading ...</span></b>
             </span>
           {%- endif %}
 

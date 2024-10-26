@@ -115,18 +115,19 @@ darkmode: false
 # External url should start with http:// or https://
 menu:
   home: / || fa fa-home
-  My Notes: /categories/My-Notes/ || fa fa-book
-  about: /about/ || fa fa-user
-  # Projects: /projects/ || fa fa-briefcase
-  Platforms: https://enkr1.github.io/platforms/ || fa fa-link
-  # Gallery: /gallery/ || fa fa-image
-  tags: /tags/ || fa fa-tags
-  categories: /categories/ || fa fa-th
-  archives: /archives/ || fa fa-history
-  # schedule: /schedule/ || fa fa-calendar
-  # sitemap: /sitemap.txt || fa fa-sitemap
-  # commonweal: /404/ || fa fa-heartbeat
+  About Me: /about/ || fa fa-user
   Connect with Me: https://cal.com/enkr1/collaborations?layout=column_view || fa fa-calendar
+  My Platforms: https://enkr1.github.io/platforms/ || fa fa-link
+  tags: /tags/ || fa fa-tags
+  categories: /categories/ || fa fa-list
+  Notebooks: /categories/Notebooks/ || fa fa-bookmark
+  Journals: /categories/About-Me/Journals/ || fa fa-book
+  # Projects: /projects/ || fa fa-briefcase
+  # Gallery: /gallery/ || fa fa-image
+  History: /history/ || fa fa-history
+  sitemap: /sitemap.txt || fa fa-sitemap
+  # schedule: /schedule/ || fa fa-calendar
+  # commonweal: /404/ || fa fa-heartbeat
 
 # Enable / Disable menu icons / item badges.
 menu_settings:
@@ -309,7 +310,7 @@ related_posts:
   title: # Custom header, leave empty to use the default one
   display_in_home: true
   params:
-    maxCount: 5
+    maxCount: 3
     PPMixingRate: 0.0
     #isDate: false
     #isImage: false
@@ -339,7 +340,7 @@ tagcloud:
   max: 30 # Maxium font size in px
   start: "#ccc" # Start color (hex, rgba, hsla or color keywords)
   end: "#111" # End color (hex, rgba, hsla or color keywords)
-  amount: 200 # Amount of tags, change it if you have more than 200 tags
+  amount: 300 # Amount of tags, change it if you have more than 200 tags
 
 # Google Calendar
 # Share your recent schedule to others via calendar page.
@@ -651,7 +652,7 @@ valine:
   placeholder: Just go go # Comment box placeholder
   avatar: mm # Gravatar style
   guest_info: nick,mail,link # Custom comment header
-  pageSize: 10 # Pagination size
+  pageSize: 3 # Pagination size
   language: # Language, available values: en, zh-cn
   visitor: false # Article reading statistic
   comment_count: true # If false, comment count will only be displayed in post page, not in home page

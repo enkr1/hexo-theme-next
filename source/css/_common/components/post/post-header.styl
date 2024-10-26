@@ -8,7 +8,7 @@
     img {
       border-radius: $border-radius;
       box-shadow: $box-shadow-inner;
-      max-height: 25rem;
+      max-height: 60rem;
       width 100%;
       object-fit: cover;
 
@@ -19,12 +19,32 @@
   }
 
   article {
+    // added on Gemini.style
+    // border: 1px solid transparent;
+    transition: .3s all ease-in-out;
+
     .post-meta {
       .post-meta-item::nth-child(2) {
         display: none !important;
       }
     }
+
+    // NEW: hover border
+    &:hover {
+      border: 1px solid $theme-color;
+      // box-shadow: $box-shadow-inner;
+      // box-shadow: .3rem .3rem .8rem 0rem $theme-color;
+      box-shadow: 0rem 0rem 1.3rem 0rem rgba(198, 0, 0, 0.3);
+
+      .post-button,
+      .post-sticky-flag {
+        // background: red;
+        opacity: 1;
+      }
+
+    }
   }
+
 }
 
 .posts-expand .post-header {
@@ -90,16 +110,19 @@
   font-size: $font-size-larger;
 
   &::before {
-    background: var(--link-color);
+    // background: var(--link-color);
+    background: $theme-color;
     bottom: 0;
     content: '';
-    height: 2px;
+    height: 1px;
     left: 0;
     position: absolute;
     transform: scaleX(0);
     visibility: hidden;
     width: 100%;
-    the-transition();
+    // the-transition();
+    transition: all .3s ease-in-out;
+    opacity: .5;
   }
 
   &:hover::before {
@@ -117,13 +140,14 @@
   color: $grey-dark;
   font-family: $font-family-posts;
   font-size: $font-size-smallest;
-  margin: 1rem 0 2.4rem;
+  margin: 1rem 0 1.8rem;
   text-align: center;
 
   .post-description {
-    font-size: $font-size-small;
-    margin-top: 2px;
+    font-size: $font-size-smaller;
     text-align: justify;
+    margin: 1.3rem 0 0;
+    // color: red;
 
     +tablet() {
       display: none;

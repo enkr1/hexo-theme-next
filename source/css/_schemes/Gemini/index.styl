@@ -132,7 +132,7 @@ $use-seo = hexo-config('seo');
 // Headers.
 // ==================================================
 .post-body {
-  h1,h2,h3,h4,h5 {
+  h1,h2,h3,h4,h5,h6 {
     color: $theme-color;
   }
 
@@ -143,12 +143,10 @@ $use-seo = hexo-config('seo');
 
   h1 {
     font-size: $font-size-largest;
-    // margin: 2rem 0 .3rem;
   }
 
   h2 {
     font-size: $font-size-larger;
-    // margin: 0 0 .6rem;
   }
 
   h3 {
@@ -166,6 +164,17 @@ $use-seo = hexo-config('seo');
 
     if ($use-seo) {
       border-bottom: 1px dotted $body-bg-color;
+    }
+  }
+
+  h2,h3,h4,h5,h6 {
+    &::before {
+      // ▲
+      // content: "‣";
+      content: "►";
+      margin: 0 1rem 0 0;
+      color: #FE0000; // NOTE: same as a:not(.fancybox):not(.category-list-link):not(.btn)
+      opacity: .13;
     }
   }
 

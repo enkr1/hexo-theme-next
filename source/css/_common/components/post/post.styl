@@ -14,7 +14,9 @@
     position: relative;
     margin: 0 .1rem 0 0;
     color: $theme-color;
+    color: #FE0000;
     display: inline;
+    transition: all .3s ease-in-out;
 
     // Add the Font Awesome icon before the link text
     &::after {
@@ -95,6 +97,7 @@
   right: -1.5rem;
   top: -.8rem;
   color: $theme-color;
+  transition: all .3s ease-in-out;
 
   +tablet() {
     top: -0.5rem;
@@ -110,9 +113,12 @@
 .post-button {
   text-align: right;
   font-size: $font-size-smallest;
+  width: fit-content;
+  margin: 0 0 0 auto;
+  transition: all .3s ease-in-out;
 
   +desktop() {
-    opacity: .6;
+    opacity: .3;
 
     &:hover {
       opacity: 1;

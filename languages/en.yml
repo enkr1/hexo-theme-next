@@ -61,7 +61,7 @@ counter:
     other: "%d posts in total."
 
 state:
-  posts: posts
+  posts: Posts
   tags: tags
   categories: categories
 
