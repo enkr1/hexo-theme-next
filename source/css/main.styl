@@ -101,6 +101,10 @@ for $inject_style in hexo-config('injects.style')
   margin: -1.5rem 0 0;
   padding: 0 1rem 3rem;
 
+  +mobile() {
+    padding: 0 1rem 1.3rem;
+  }
+
   .category-all-title,
   .tag-cloud-title {
     font-size: $font-size-small;
@@ -137,4 +141,10 @@ for $inject_style in hexo-config('injects.style')
   height: 100%;
   min-height: 50rem;
   width: 100%;
+}
+
+.disqus-item {
+  .post-meta-item-text {
+    display: none;
+  }
 }

@@ -190,7 +190,7 @@ $brand-hover-color              = white;
 $brand-color-dark               = $grey-lighter;
 $brand-hover-color-dark         = $grey-lighter;
 
-$font-size-title                = (hexo-config('font.enable') and hexo-config('font.title.size') is a 'unit') ? unit(hexo-config('font.title.size'), em) : 1.375em;
+$font-size-title                = (hexo-config('font.enable') and hexo-config('font.title.size') is a 'unit') ? unit(hexo-config('font.title.size'), em) : 1.6rem;
 $font-size-subtitle             = $font-size-smallest;
 $subtitle-color                 = $grey-dark;
 $site-subtitle-color            = $grey-dark;
@@ -241,7 +241,7 @@ $b2t-position-bottom-on         = 10rem;
 $b2t-position-bottom-on-mobile  = 3.3rem;
 $b2t-position-right             = 3rem;
 $b2t-position-right-mobile      = 1.3rem;
-$b2t-font-size                  = 12px;
+$b2t-font-size                  = 1.3rem;
 $b2t-color                      = white;
 $b2t-bg-color                   = rgba(34, 34, 34, .6);
 
@@ -403,4 +403,8 @@ $border-radius           = 1.4rem;
 .post-block
 {
   border: 1px solid #000;
+}
+
+.header {
+  z-index: 1301;
 }

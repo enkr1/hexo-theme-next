@@ -44,16 +44,92 @@
       }
     }
 
-    async function trackUniqueVisitor() {
-      const visitorData = await getVisitorIP();
-      if (!visitorData) return;
+    async function getVisitorIP() {
+      console.debug(`[DEBUG] Fetching visitor IP...`);
 
-      const hashedIp = await hashIP(visitorData.ip);
-      const ipCollection = collection(db, 'unique_visitors');
+      try {
+        const response = await fetch('https://ipwho.is/', { cache: "no-store" });
+
+        console.debug(`[DEBUG] IP API response status: ${response.status}`);
+
+        if (!response.ok) {
+          throw new Error(`API responded with status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        console.debug(`[DEBUG] Raw API response:`, data);
+
+        if (!data.success) {
+          throw new Error(`IP API failed: ${data.message || "Unknown error"}`);
+        }
+
+        console.debug(`[DEBUG] Visitor IP: ${data.ip}, Location: ${data.city}, ${data.country}`);
+
+        return {
+          ip: data.ip,
+          city: data.city,
+          country: data.country,
+          region: data.region,
+          isp: data.connection?.isp || "Unknown ISP",
+          userAgent: navigator.userAgent
+        };
+      } catch (error) {
+        console.error(`[ERROR] Failed to fetch visitor IP:`, error);
+
+        // Fallback to `api64.ipify.org` in case `ipwho.is` fails
+        try {
+          console.warn(`[WARN] Attempting fallback to ipify.org...`);
+          const fallbackResponse = await fetch('https://api64.ipify.org?format=json');
+
+          if (!fallbackResponse.ok) {
+            throw new Error(`Fallback API responded with status: ${fallbackResponse.status}`);
+          }
+
+          const fallbackData = await fallbackResponse.json();
+          console.warn(`[WARN] Using fallback IP API: ${fallbackData.ip}`);
+
+          return {
+            ip: fallbackData.ip,
+            city: "Unknown",
+            country: "Unknown",
+            region: "Unknown",
+            isp: "Unknown ISP",
+            userAgent: navigator.userAgent
+          };
+        } catch (fallbackError) {
+          console.error(`[ERROR] Failed to fetch from fallback IP API:`, fallbackError);
+          return null; // Return `null` to signal failure
+        }
+      }
+    }
+
+
+    async function hashIP(ip) {
+      const msgUint8 = new TextEncoder().encode(ip); // Convert IP to UTF-8
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8); // Hash it
+      const hashArray = Array.from(new Uint8Array(hashBuffer)); // Convert to byte array
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); // Convert to hex
+    }
+
+    async function trackUniqueVisitor() {
+      console.debug(`[DEBUG] Tracking unique visitor`);
+
+      const visitorData = await getVisitorIP(); // Fetch IP and geolocation
+      if (!visitorData) {
+        console.warn(`[DEBUG] Skipping visitor tracking as no IP data is available.`);
+        return; // Exit if no IP data
+      }
+
+      const hashedIp = await hashIP(visitorData.ip); // Hash the IP for privacy
+      console.debug(`[DEBUG] Hashed IP:`, hashedIp);
+
+      const ipCollection = collection(db, 'unique_visitors'); // Firestore collection
       const ipDoc = doc(ipCollection, hashedIp);
       const docSnapshot = await getDoc(ipDoc);
 
       if (!docSnapshot.exists()) {
+        console.debug(`[DEBUG] New visitor detected`);
         await setDoc(ipDoc, {
           ip: visitorData.ip,
           timestamp: new Date(),
@@ -61,17 +137,15 @@
           userAgent: navigator.userAgent
         });
 
+        // Increment the total visitor count
         const totalIpDoc = doc(db, 'visitor_stats', 'total_ip_visitors');
-        await setDoc(totalIpDoc, {
-          count: FieldValue.increment(1)
-        }, { merge: true });
+        await setDoc(totalIpDoc, { count: FieldValue.increment(1) }, { merge: true });
 
-        console.debug(`[DEBUG] New visitor: IP ${visitorData.ip} recorded.`);
+        console.debug(`[DEBUG] Visitor data recorded: IP ${visitorData.ip}`);
       } else {
         console.debug(`[DEBUG] Returning visitor: IP ${visitorData.ip} already recorded.`);
       }
     }
-
     const appendCountTo = (el) => {
       return count => {
         el.innerText = count;
@@ -82,6 +156,9 @@
       console.debug(`[DEBUG] Skipping Firestore requests in local development.`);
 
     } else {
+
+      trackUniqueVisitor();
+
       if (CONFIG.page.isPost) {
         console.debug(`[DEBUG] isPost.`);
         const title = document.querySelector('.post-title').innerText.trim();

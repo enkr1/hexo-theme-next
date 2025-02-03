@@ -124,7 +124,7 @@ menu:
   Journals: /categories/About-Me/Journals/ || fa fa-book
   # Projects: /projects/ || fa fa-briefcase
   # Gallery: /gallery/ || fa fa-image
-  History: /history/ || fa fa-history
+  Archives: /archives/ || fa fa-history
   sitemap: /sitemap.txt || fa fa-sitemap
   # schedule: /schedule/ || fa fa-calendar
   # commonweal: /404/ || fa fa-heartbeat
