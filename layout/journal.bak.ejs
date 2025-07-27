@@ -1,0 +1,25 @@
+<% const journalPosts=site.categories.filter(c=> c.name === 'Journals').map(c => c.posts)
+  .sort('date', -1)
+  .toArray()
+  %>
+
+  <main class="content posts-expand">
+    <% journalPosts.forEach(post=> { %>
+      <article class="post post-type-<%= post.layout || 'normal' %>">
+        <%- partial('_partials/post/header.swig', { post }) %>
+
+          <div class="post-body">
+            <% if(post.excerpt) { %>
+              <%- post.excerpt %>
+                <div class="post-more-link text-center">
+                  <a class="btn" href="<%= url_for(post.path) %>#more" rel="contents">
+                    <%= __('post.read_more') %> »
+                  </a>
+                </div>
+                <% } %>
+          </div>
+
+          <%- partial('_partials/post/footer.swig', { post }) %>
+      </article>
+      <% }) %>
+  </main>

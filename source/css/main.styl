@@ -96,6 +96,42 @@ for $inject_style in hexo-config('injects.style')
   }
 }
 
+// Detail page for journal.
+// layout: journal-post
+.journal,
+.journal-post {
+  .post-title {
+  }
+
+  .post-body {
+    p {
+    }
+  }
+
+  .fancybox {
+    margin: 0rem auto 1.5rem;
+
+    img {
+      border: .3px solid #333;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      max-height: unset !important;
+      transition: all 0.3s ease;
+
+      +desktop() {
+        width: 50%;
+      }
+
+      &:hover {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    .image-caption {
+      // margin-bottom: 1.3rem;
+    }
+  }
+}
+
 .category-all-page,
 .tag-cloud {
   margin: -1.5rem 0 0;

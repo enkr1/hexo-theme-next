@@ -54,9 +54,9 @@ $blockquote-color-dark        = $grey;
 $border-color                 = $grey-light;
 
 // Background color for <body>
-$body-bg-color                = #ffffff;
+$body-bg-color                = #f5f7f9; // Light gray with blue tint (easier on eyes)
 $body-bg-color-dark           = #282828;
-$content-bg-color             = white;
+$content-bg-color             = #ffffff; // Keep content background white for contrast
 $content-bg-color-dark        = $black-dim;
 
 // Selection
@@ -353,10 +353,10 @@ $line-height-code-block   = 1.6; // Can't be less than 1.3;
 
 // NOTE: Font size
 // $font-size-base           = (hexo-config('font.enable') and hexo-config('font.global.size') is a 'unit') ? unit(hexo-config('font.global.size'), rem) : 1.2rem;
-$font-size-smallest       = 1.1rem;
-$font-size-smaller        = 1.2rem;
-$font-size-small          = 1.3rem;
-$font-size-base           = 1.4rem;
+$font-size-smallest       = 1.2rem;
+$font-size-smaller        = 1.3rem;
+$font-size-small          = 1.4rem;
+$font-size-base           = 1.5rem;
 // $font-size-base           = $font-size-small;
 $font-size-medium         = 1.6rem;
 $font-size-large          = 1.8rem;
@@ -368,18 +368,6 @@ $font-size-headings-step  = .125em;
 $font-size-headings-base  = (hexo-config('font.enable') and hexo-config('font.headings.size') is a 'unit') ? unit(hexo-config('font.headings.size'), em) : 1.625em;
 
 // $theme-p-color: #000;
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-html {
-  font-size: 62.5%;
-  overflow-x: hidden;
-}
 
 
 // From Gemini
@@ -396,13 +384,35 @@ $border-radius-inner     = initial;
 $border-radius           = 1.4rem;
 
 
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: $body-bg-color !important;
+}
+
 // NEW: this might be the theme we are using
 .sidebar-inner,
 .header-inner,
 .content.index article,
 .post-block
 {
-  border: 1px solid #000;
+  border: 1px solid transparent;
+}
+
+.sidebar {
+  border-radius: 1rem;
+  background-color: $body-bg-color !important;
 }
 
 .header {

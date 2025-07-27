@@ -85,7 +85,14 @@ NOTE: created_at
             {%- endif %}
           {%- endif %}
 
-          {%- if post.categories and post.categories.length and theme.post_meta.categories %}
+          {%-
+            if
+              post.categories
+              and post.categories.length
+              and theme.post_meta.categories
+              and not is_customised_journal_list
+          %}
+
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -130,7 +137,9 @@ NOTE: created_at
 NEW: Added a break after category
 -->
 
+{%- if not is_customised_journal_list %}
   <br>
+{%- endif %}
 
 
 <!--
@@ -175,7 +184,11 @@ NOTE: disqus
 <!--
 NOTE: views count
 -->
-          {%- if theme.firestore.enable %}
+          {%-
+            if
+              theme.firestore.enable
+              and not is_customised_journal_list
+          %}
             <span class="post-meta-item" title="{{ __('post.views') }}">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -205,7 +218,9 @@ NOTE: views count
       {%- if post.photos and post.photos.length %}
         <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
           {%- for photo in post.photos %}
-            <img src="{{ url_for(photo) }}" itemprop="contentUrl">
+
+              <img src="{{ url_for(photo) }}" itemprop="contentUrl">
+
           {%- endfor %}
         </div>
       {%- endif %}

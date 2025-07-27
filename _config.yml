@@ -115,13 +115,15 @@ darkmode: false
 # External url should start with http:// or https://
 menu:
   home: / || fa fa-home
+  Journals: /journals/ || fa fa-pencil-alt
   About Me: /about/ || fa fa-user
   Connect with Me: https://cal.com/enkr1/collaborations?layout=column_view || fa fa-calendar
   My Platforms: https://enkr1.github.io/platforms/ || fa fa-link
   tags: /tags/ || fa fa-tags
   categories: /categories/ || fa fa-list
-  Notebooks: /categories/Notebooks/ || fa fa-bookmark
-  Journals: /categories/About-Me/Journals/ || fa fa-book
+  Notebooks (All): /categories/Notebooks/ || fa fa-book
+  Notebooks (Tech): /categories/Software-Engineering/Programming-Languages/ || fa fa-book
+  # Journals: /categories/About-Me/Journals/ || fa fa-book
   # Projects: /projects/ || fa fa-briefcase
   # Gallery: /gallery/ || fa fa-image
   Archives: /archives/ || fa fa-history
